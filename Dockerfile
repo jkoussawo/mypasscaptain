@@ -1,13 +1,15 @@
-FROM django
+FROM python:3
+
+LABEL MAINTAINER JKOUSSAWO
+
+ENV PYTHONUNBUFFERED 1
 
 ADD . /mypass
 
 WORKDIR /mypass
 
-RUN pip install --upgrade django
-
-RUN pip install --upgrade pip
+COPY ./requirements.txt /mypass/requirements.txt 
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./manage.py runserver 0.0.0.0:8000" ]
+COPY . /app

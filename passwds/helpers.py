@@ -76,7 +76,10 @@ def password_generator(minu,maj,chiffres,speciaux,nbreCaractere):
         password_characters = string.punctuation
         password_gen = ''.join(random.choice(password_characters) for i in range(nbreCaractere))
     else :
-        print("E Valeurs : {} {} {} {}".format(minu,maj,chiffres,speciaux))
+        print("CAS 15")
+        password_characters = string.ascii_letters + string.punctuation
+        password_gen = ''.join(random.choice(password_characters) for i in range(nbreCaractere))
+        #print("E Valeurs : {} {} {} {}".format(minu,maj,chiffres,speciaux))
 
 
     return password_gen
