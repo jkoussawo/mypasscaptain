@@ -1,0 +1,23 @@
+FROM python:3
+MAINTAINER JKOUSSAWO
+
+ENV PYTHONUNBUFFERED 1
+
+RUN mkdir /mypasscaptain
+
+WORKDIR /mypasscaptain
+
+COPY ./requirements.txt /mypasscaptain/
+
+RUN pip install -r requirements.txt
+
+
+COPY ./* /mypasscaptain/
+
+RUN adduser -D jkoussawo
+
+USER jkoussawo
+
+EXPOSE 8000
+
+CMD ["python","manage.py","runserver","0.0.0.0:8000"]
